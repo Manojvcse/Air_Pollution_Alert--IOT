@@ -9,8 +9,8 @@
  
 char auth[] = BLYNK_AUTH_TOKEN;
 
-char ssid[] = "vivo Y15";  // type your wifi name vivo Y15
-char pass[] = "kavya2006";  // type your wifi password  kavya2006
+char ssid[] = "";  // type your wifi name vivo Y15
+char pass[] = "";  // type your wifi password  kavya2006
 int smokeA0 = A0;
 int data = 0;
 int sensorThres = 100;
@@ -27,7 +27,7 @@ void sendSensor(){
 
 
   if(data > 700){
-    //Blynk.email("test@gmail.com", "Alert", "Gas Leakage Detected!");
+   
     Blynk.logEvent("gas_alert","Gas Leakage Detected");
   }
 }
@@ -36,7 +36,7 @@ void setup(){
   pinMode(smokeA0, INPUT);
    Serial.begin(115200);
   Blynk.begin(auth, ssid, pass);
-  //dht.begin();
+
   timer.setInterval(2500L, sendSensor);
 }
 
